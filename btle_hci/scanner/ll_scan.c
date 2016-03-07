@@ -211,16 +211,16 @@ static void m_adv_report_generate (uint8_t * const pkt)
   adv_report->address_type = (pkt[UL_PDU_DD_SENDER_PADD_OFFSET] & UL_PDU_DD_SENDER_PADD_MASK) >> UL_PDU_DD_SENDER_PADD_SHIFT;
   adv_report->rssi = m_rssi;
   
-  adv_report->length_data = (adv_report->length_data       ) - BTLE_DEVICE_ADDRESS__SIZE;
-  if (adv_report->length_data > 0x1F)
-    return;
+  //adv_report->length_data = (adv_report->length_data       ) - BTLE_DEVICE_ADDRESS__SIZE;
+  //if (adv_report->length_data > 0x1F)
+	//return;
   adv_report->length_data  = 0;
 
   if (has_data)
   {
     adv_report->length_data = (adv_report->length_data       ) - BTLE_DEVICE_ADDRESS__SIZE;
-    if (adv_report->length_data > 0x1F)
-      return;
+	//if (adv_report->length_data > 0x1F)
+	  //return;
     memcpy(adv_report->report_data, &pkt[9], BTLE_ADVERTISING_DATA__SIZE);
   }
   adv_report->num_reports = 1;
